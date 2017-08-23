@@ -1,0 +1,21 @@
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="main.java.Entities.Star">
+    <cache />
+
+    <select id="getAllStars" resultType="Star">
+        SELECT id, name, atitude, longitude, type FROM stars
+    </select>
+
+    <insert id="insertStar" parameterType="Star">
+INSERT INTO public.stars(name, atitude, longitude, type)
+    VALUES (#{name}, #{atitude}, #{longitude}, #{type})
+    </insert>
+
+    <update id="updateStar" parameterType="Star">
+        UPDATE stars SET
+        name = #{name},
+        atitude = #{atitude},
+        longitude = #{longitude}
+        WHERE id = #{id}
+    </update>
+</mapper>
